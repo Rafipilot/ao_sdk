@@ -1,0 +1,15 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Required, TypedDict
+
+__all__ = ["AgentDeleteParams"]
+
+
+class AgentDeleteParams(TypedDict, total=False):
+    agent_id: Required[str]
+    """id of particular agent"""
+
+    kennel_id: Required[str]
+    """id of application kennel to operate on"""
