@@ -15,12 +15,9 @@ The REST API documentation can be found on [www.aolabs.ai](https://www.aolabs.ai
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/Rafipilot/ao_sdk.git
+# install from PyPI
+pip install --pre ao_python_SDK
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre ao_python_SDK`
 
 ## Usage
 
