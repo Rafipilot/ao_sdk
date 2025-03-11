@@ -71,6 +71,31 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
+
+```python
+from ao_python_SDK import AoPythonSDK
+
+client = AoPythonSDK()
+
+response = client.kennel.agent.invoke(
+    control={
+        "cn": False,
+        "cp": False,
+        "neuron": {
+            "dd": True,
+            "default": True,
+            "hamming": True,
+        },
+        "states": 1,
+        "us": True,
+    },
+)
+print(response.control)
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `ao_python_SDK.APIConnectionError` is raised.
