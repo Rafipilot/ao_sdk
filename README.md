@@ -6,7 +6,7 @@ The Ao Python SDK Python library provides convenient access to the Ao Python SDK
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
@@ -15,12 +15,9 @@ The REST API documentation can be found on [www.aolabs.ai](https://www.aolabs.ai
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/ao_python_SDK-python.git
+# install from PyPI
+pip install --pre ao_python_SDK
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre ao_python_SDK`
 
 ## Usage
 
@@ -73,6 +70,31 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
+
+```python
+from ao_python_SDK import AoPythonSDK
+
+client = AoPythonSDK()
+
+response = client.kennel.agent.invoke(
+    control={
+        "cn": False,
+        "cp": False,
+        "neuron": {
+            "dd": True,
+            "default": True,
+            "hamming": True,
+        },
+        "states": 1,
+        "us": True,
+    },
+)
+print(response.control)
+```
 
 ## Handling errors
 
@@ -204,9 +226,9 @@ kennel = response.parse()  # get the object that `kennel.list()` would have retu
 print(kennel)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/ao_python_SDK-python/tree/main/src/ao_python_SDK/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/Rafipilot/ao_sdk/tree/main/src/ao_python_SDK/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/ao_python_SDK-python/tree/main/src/ao_python_SDK/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/Rafipilot/ao_sdk/tree/main/src/ao_python_SDK/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -310,7 +332,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/ao_python_SDK-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/Rafipilot/ao_sdk/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 

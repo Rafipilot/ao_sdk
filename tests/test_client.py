@@ -1601,7 +1601,7 @@ class TestAsyncAoPythonSDK:
         import threading
 
         from ao_python_SDK._utils import asyncify
-        from ao_python_SDK._base_client import get_platform 
+        from ao_python_SDK._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()
